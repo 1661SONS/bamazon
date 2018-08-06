@@ -22,18 +22,17 @@ connection.connect( function(err) {
 connection.query('SELECT * FROM products', function(err, response) {
     if (err) throw err;
     // need to pretty print this table
+    var table = new Table ({
+        head: ['ID'.red, 'Product'.red, 'Price'.red, 'Stock'.red],
+        colWidths: [5, 30, 10, 10]
+    });
     for (var i = 0; i < response.length; i++) {
         var item = response[i];
-
-        var table = new Table ({
-            head: ['ID', 'Product', 'Price', 'Stock'],
-            colWidths: [5, 30, 10, 10]
-        });
         table.push(
             [item.item_id, item.product_name, '$ '.green+item.price, item.stock_quantity]
         );
-        console.log(table.toString());
     };
+    console.log(table.toString());
     connection.end();
 });
 
