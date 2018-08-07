@@ -120,9 +120,9 @@ function buy() {
                         setTimeout(buy, 1500);
                     // if no, 
                     } else {
-                        console.log(colors.green('____________________________________________________________\n'));
-                        console.log(colors.magenta.bold('\nPurchase complete! Much appreciated!\n'));
-                        console.log(colors.green('____________________________________________________________\n'));
+                        console.log(colors.magenta.bold('____________________________________________________________\n'));
+                        console.log(colors.green('\nPurchase complete! Much appreciated!\n'));
+                        console.log(colors.magenta.bold('____________________________________________________________\n'));
 
                         process.exit(0);
                     }
