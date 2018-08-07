@@ -80,8 +80,8 @@ function buy() {
             if (err) throw err;
             var stock_quantity = response[0].stock_quantity;
 
-            // let the user know if the product they're trying to purchase has stock lower than their request
-            if (stock_quantity < purchaseQuantity) {
+            // let the user know if the product they're trying to purchase has stock lower than their request, or is 0
+            if (stock_quantity < purchaseQuantity || stock_quantity === 0) {
                 console.log(colors.yellow(`\nWe don't have that many units in stock! Please choose a number of units less than or equal to the current product inventory.\n`));
 
                 // only show this for one second
@@ -120,8 +120,8 @@ function buy() {
                         setTimeout(buy, 1500);
                     // if no, 
                     } else {
-                        console.log(colors.magenta.bold('____________________________________________________________\n'));
-                        console.log(colors.green('\nPurchase complete! Much appreciated!\n'));
+                        console.log(colors.green('____________________________________________________________\n'));
+                        console.log(colors.magenta.bold('\nPurchase complete! Much appreciated!\n'));
                         console.log(colors.green('____________________________________________________________\n'));
 
                         process.exit(0);
